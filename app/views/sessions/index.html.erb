@@ -1,0 +1,10 @@
+<h1>All users</h1>
+<ul class="sessions">
+<% @sessions.each do |session| %>
+<li>
+
+<%= link_to session.name, session %>
+</li>
+<% end %>
+</ul>
+

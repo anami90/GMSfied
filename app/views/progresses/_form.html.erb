@@ -1,0 +1,18 @@
+<%= simple_form_for @progress, :html => { :class => 'form-horizontal' } do |f| %>
+
+ 
+    <%= f.input :project_id,label: 'Grant Name' do %>
+     <%= f.collection_select :project_id, Project.order(:name), :id, :name, include_blank:true %>
+     <%end%>
+    <%= f.input :milestone %>
+    <%= f.input :post %>
+    <%= f.input :status %>
+    <%= f.input :date %>
+    <%= f.input :session_id, label: 'User' %>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                progresses_path, :class => 'btn' %>
+  </div>
+<% end %>

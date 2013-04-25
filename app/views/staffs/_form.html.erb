@@ -1,0 +1,17 @@
+<%= simple_form_for @staff, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :firstname %>
+  <%= f.input :lastname %>
+  <%= f.input :project_id , label: 'Grant Name' do %>
+      <%= f.collection_select :project_id, Project.order(:name), :id, :name, include_blank:true %>
+    <%end%>  
+  <%= f.input :description %>
+  <%= f.input :attachment %>
+  <%= f.input :grantee_id do %>
+    <%= f.collection_select :grantee_id, Grantee.order(:organization), :id, :organization, include_blank: true %>
+  <%end%>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                staffs_path, :class => 'btn' %>
+  </div>
+<% end %>

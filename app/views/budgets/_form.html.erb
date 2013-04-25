@@ -1,0 +1,15 @@
+<%= simple_form_for @budget, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :task %>
+  <%= f.input :amount, placeholder: 'in USD ($)' %>
+  <%= f.input :description %>
+  <%= f.input :status %>
+  <%= f.input :receiptno %>
+  <%= f.input :project_id, label: 'Grant Name'  do %>
+     <%= f.collection_select :project_id, Project.order(:name), :id, :name, include_blank:true %>
+  <%end%> 
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                budgets_path, :class => 'btn' %>
+  </div>
+<% end %>

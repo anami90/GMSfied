@@ -1,0 +1,26 @@
+<%= simple_form_for @project, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :location, placeholder: 'eg: Nairobi, Kenya' %>
+  
+  <%= f.input :balance, disabled: true %>
+  <%= f.input :amount, placeholder: 'in USD ($)', label: 'Grant Awarded' %>
+  <%= f.input :accountnumber %>
+  <%= f.input :donor_id do %>
+    <%= f.collection_select :donor_id, Donor.order(:name), :id, :name, include_blank: true %>
+    <%end%>  
+  <%= f.input :ledger_id, disabled: true %>
+  <%= f.input :budget_id %>
+  <%= f.input :grantee_id do %>
+   <%= f.collection_select :grantee_id, Grantee.order(:organization), :id, :organization, include_blank: true %>
+   <%end%>
+  <%= f.input :startdate %>
+  <%= f.input :finish %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                projects_path, :class => 'btn' %>
+  </div>
+<% end %>
+
+
+

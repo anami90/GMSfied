@@ -1,0 +1,14 @@
+<h1>
+<div class ="span3">	
+<%= @session.name %>
+</div>
+ <div class="span9">
+    <% if @session.progresses.any? %>
+      <h6>Progress Updates (<%= @session.progresses.count %>)</h3>
+      <ol class="progresses">
+        <%= render @progresses %>
+      </ol>
+     
+    <% end %>
+  </div>
+</h1> 

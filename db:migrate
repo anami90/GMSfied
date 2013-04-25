@@ -1,0 +1,30 @@
+==  AddImageToProjects: migrating =============================================
+-- add_column(:projects, :image, :string)
+   -> 0.0018s
+==  AddImageToProjects: migrated (0.0019s) ====================================
+
+==  AddGranteeidToStaff: migrating ============================================
+-- add_column(:staffs, :grantee_id, :integer)
+   -> 0.0014s
+==  AddGranteeidToStaff: migrated (0.0015s) ===================================
+
+==  CreateSessions: migrating =================================================
+-- create_table(:sessions)
+   -> 0.0813s
+==  CreateSessions: migrated (0.0814s) ========================================
+
+==  AddEmailUniquenessIndex: migrating ========================================
+-- add_index(:users, :email)
+   -> 0.0640s
+==  AddEmailUniquenessIndex: migrated (0.0641s) ===============================
+
+==  AddPasswordToSessions: migrating ==========================================
+-- add_column(:sessions, :encrypted_password, :string)
+   -> 0.0016s
+==  AddPasswordToSessions: migrated (0.0017s) =================================
+
+==  AddSaltToSessions: migrating ==============================================
+-- add_column(:sessions, :salt, :string)
+   -> 0.0015s
+==  AddSaltToSessions: migrated (0.0017s) =====================================
+

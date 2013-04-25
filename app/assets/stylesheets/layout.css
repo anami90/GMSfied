@@ -1,0 +1,152 @@
+
+footer {
+text-align: float right;
+margin-top: 10px;
+width: 710px;
+margin-left: auto;
+margin-right: auto;
+}
+footer nav {
+float: none;
+}
+
+div.field, div.actions {
+margin-bottom: 10px;
+}
+
+.field_with_errors {
+margin-top: 10px;
+padding: 2px;
+background-color: red;
+display: table;
+}
+.field_with_errors label {
+color: #fff;
+}
+#error_explanation {
+width: 400px;
+border: 2px solid red;
+padding: 7px;
+padding-bottom: 12px;
+margin-bottom: 20px;
+background-color: #f0f0f0;
+}
+#error_explanation h2 {
+text-align: left;
+font-weight: bold;
+padding: 5px 5px 5px 15px;
+font-size: 12px;
+margin: -7px;
+background-color: #c00;
+color: #fff;
+}
+#error_explanation p {
+color: #333;
+margin-bottom: 0;
+padding: 5px;
+}
+#error_explanation ul li {
+font-size: 12px;
+list-style: square;
+}
+
+
+
+/*Signin*/
+.form-signin {
+        max-width: 300px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="text"],
+      .form-signin input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
+
+/*body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+      }
+*/
+
+.sign{
+  float: right;
+}
+
+/* session/users index */
+
+.sessions {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child {
+      border-bottom: 1px solid $grayLighter;
+    }
+  }
+}
+
+
+/* Progress */
+
+.progresses {
+  list-style: none;
+  margin: 10px 0 0 0;
+    
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+.post {
+  /*display: block;*/
+  font-size: 18px;
+
+}
+.timestamp {
+  color: #888;
+  font-size: 12px;
+}
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+.milestone {
+  font-size: 13px;
+  color: #0088CC;
+}
+.anami{
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+ .seperator{
+  max-height: 100px;
+ } 
+ h{
+  font-size: 12px;
+  color: red;
+ }

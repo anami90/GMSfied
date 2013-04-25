@@ -1,0 +1,25 @@
+<%= simple_form_for @grantee, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+  
+  <%= f.input :firstname %>
+  <%= f.input :lastname %>
+  <%= f.input :email %>
+  <%= f.input :memorandumou %>
+  <%= f.input :organization %>
+  <%= f.input :description %>
+  <%= f.input :project_id, label: 'Grant Name'  do %>
+   <%= f.collection_select :project_id, Project.order(:name), :id, :name, include_blank: true %>
+   <%end%>
+  <%= f.input :date %>
+  
+  
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                grantees_path, :class => 'btn' %>
+  </div>
+  
+<% end %>
+
+</fieldset>
+

@@ -1,0 +1,11 @@
+<div class='anami'>
+<li>
+		 <span class = "post"><%=budget.task %></span></br>
+         <span class="post"><%= number_to_currency budget.amount %></span></br>
+         <span class = "milestone"> Status: <%= budget.status %></span></br>
+         <span class="timestamp">
+            Posted <%= time_ago_in_words(budget.created_at) %> ago.
+         </span>
+</li>
+
+<div>
