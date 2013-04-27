@@ -8,6 +8,8 @@ Grant::Application.routes.draw do
 
   #get "sessions/new"
   
+  get "public/index"
+
   match '/signup', :to => 'sessions#new'
   
   match '/signin', :to => 'signs#new'
@@ -15,9 +17,13 @@ Grant::Application.routes.draw do
   match '/signi', :to => 'signs#try'
 
 
+  #root to: "/signs#index"
+
   get "pages/about"
+  match '/about', to: 'pages#about'
 
   get "pages/help"
+  match '/help', to: 'pages#help'
 
   resources :grantees
 

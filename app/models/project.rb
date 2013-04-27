@@ -8,8 +8,9 @@ after_validation :geocode
 #relationships
 belongs_to :grantee
 has_many :budgets 
-has_many :donors 
+belongs_to :donors 
 has_many :grantees
+has_many :progresses
 
 validates_numericality_of :amount, :greater_than => Proc.new { |r| r.balance }, :allow_blank => true
 

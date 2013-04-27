@@ -3,6 +3,7 @@ class Progress < ActiveRecord::Base
   validates_presence_of :date, :milestone, :post, :project_id, :status, :session_id => "Cant be blank"
 
 belongs_to :session
+belongs_to :project
   
 validates :post, :length => { :maximum => 200 }
 

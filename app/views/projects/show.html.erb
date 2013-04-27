@@ -25,7 +25,7 @@
   <dt><strong><%= model_class.human_attribute_name(:budget_id) %>:</strong></dt>
   <dd><%= @project.budget_id %></dd>
   <dt><strong><%= model_class.human_attribute_name(:grantee_id) %>:</strong></dt>
-  <dd><%= @project.grantee_id %></dd>
+  <dd><%= @project.grantee.organization %></dd>
   <dt><strong><%= model_class.human_attribute_name(:startdate) %>:</strong></dt>
   <dd><%= @project.startdate %></dd>
   <dt><strong><%= model_class.human_attribute_name(:finish) %>:</strong></dt>

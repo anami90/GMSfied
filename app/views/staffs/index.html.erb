@@ -1,6 +1,6 @@
 <%- model_class = Staff -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+  <h1><%=t '.title', :default => model_class.model_name.human %> <i class="icon-group icon-blue"></i></h1>
 </div>
 <table class="table table-striped">
   <thead>
@@ -10,7 +10,7 @@
       <th><%= model_class.human_attribute_name(:lastname) %></th>
       <th><%= model_class.human_attribute_name(:project_id) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:attachment) %></th>
+      <th>Attached Document</th>
       <th><%= model_class.human_attribute_name(:grantee_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -22,16 +22,16 @@
         <td><%= link_to staff.id, staff_path(staff) %></td>
         <td><%= staff.firstname %></td>
         <td><%= staff.lastname %></td>
-        <td><%= staff.project_id %></td>
+        <td><%= staff.project.name %></td>
         <td><%= staff.description %></td>
-        <td><i ></i><%= link_to staff.attachment.name, staff.attachment.url, :target => '_blank' , :class =>"icon-cloud-download icon-blue icon-4"%> </td>
+        <td><i ></i><%= link_to staff.attachment.name, staff.attachment.url, :target => '_blank' , :class =>"icon-folder-open-alt icon-blue icon-4"%> </td>
         <td><%= staff.grantee_id %></td>
         <td><%=l staff.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_staff_path(staff), :class => 'btn btn-mini' %>
+                      edit_staff_path(staff), :class => 'btn btn-mini icon-trash' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      staff_path(staff),
+                      staff_path(staff),:class => 'btn btn-mini icon-trash',
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>

@@ -1,7 +1,8 @@
 <%- model_class = Progress -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+  <h1><%=t '.title', :default => model_class.model_name.human %> <i class="icon-cogs icon-blue"></i></h1>
 </div>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -20,12 +21,12 @@
     <% @progresses.each do |progress| %>
       <tr>
         <!--<td><%= link_to progress.id, progress_path(progress) %></td>-->
-        <td><%= progress.project_id %></td>
+        <td><%= progress.project.name %></td>
         <td><%= progress.milestone %></td>
         <td><%=link_to progress.post, progress_path(progress) %></td>
         <td><%= progress.status %></td>
         <td><%= progress.date %></td>
-        <td><%= progress.session_id %></td>
+        <td><%= progress.session.name %></td>
         <td><%=l progress.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

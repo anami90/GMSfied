@@ -1,6 +1,7 @@
 <%- model_class = Budget -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %> History</h1>
+  <h1><%=t '.title', :default => model_class.model_name.human %> History <i class="icon-bar-chart icon-blue"></i> </h1>
+  
 <div> <b>Initial Allocated amount:</b>
 </div>
 </div>
@@ -14,7 +15,7 @@
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
       <th><%= model_class.human_attribute_name(:receiptno) %></th>
-      <th><%= model_class.human_attribute_name(:project_id) %></th>
+      <th>Grant Name</th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -28,7 +29,7 @@
         <td><%= budget.description %></td>
         <td><%= budget.status %></td>
         <td><%= budget.receiptno %></td>
-        <td><%= budget.project_id %></td>
+        <td><%= budget.project.name %></td>
         <td><%=l budget.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

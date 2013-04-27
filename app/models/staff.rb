@@ -9,4 +9,5 @@ class Staff < ActiveRecord::Base
   #relationships
   belongs_to :project
   has_one :grantee
+
 end
