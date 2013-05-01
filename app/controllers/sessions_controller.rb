@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
       @session = Session.find(params[:id])
       @title = @session.name
       @progresses = @session.progresses
+
   end
 
   

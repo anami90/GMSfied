@@ -14,8 +14,8 @@ class DonorsController < ApplicationController
   # GET /donors/1.json
   def show
     @donor = Donor.find(params[:id])
-
-    respond_to do |format|
+      
+      respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @donor }
     end
@@ -26,6 +26,7 @@ class DonorsController < ApplicationController
   def new
     @donor = Donor.new
 
+    @donor.balance = 0
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @donor }
@@ -35,6 +36,13 @@ class DonorsController < ApplicationController
   # GET /donors/1/edit
   def edit
     @donor = Donor.find(params[:id])
+
+     @total =0
+    @donor.project.each  do |x|
+      @total = @total+x.amount 
+    end
+    @donor.balance = @donor.funding - @total
+ 
   end
 
   # POST /donors

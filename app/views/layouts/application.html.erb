@@ -6,17 +6,17 @@
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
   <![endif]-->
-  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale= 1.0">
-  <link href="assets/stylesheets/bootstrap_and_overrides.css.scss" rel="stylesheet">
 </head>
 <body>
 <header>
+ 
 <div class="navbar navbar-fixed-top">
 <!--<%= link_to logo, signup_path %>-->
-
+<div id= "stripe">c</div> 
     <div class="navbar-inner">
       <div class="container">
         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -24,15 +24,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="index.html">GMS</a>
+        <a class="brand" color = "#fff "href="index.html">GMS</a>
         <div class="nav-collapse">
           <ul class="nav">
             <li><%= link_to "Progress", progresses_path %></li>
             <li><%= link_to "Donors", donors_path %></li>
             <li><%= link_to "Grantees", grantees_path %></li>
             <li><%= link_to "Staff", staffs_path %></li>
-            <li><%= link_to "Budgets", budgets_path %></li>
-            
+            <li><%= link_to "Budgets", budgets_path %></li> 
           </ul>
            <div class = "sign">
            <ul class="nav">
@@ -54,23 +53,25 @@
 </header>
   <div class="container-fluid">
   <% flash.each do |name,msg| %>
- <div class="alert alert-<%=name == :notice ? 'success' : 'error' %>">
+ <div class="alert alert-<%=(name == :notice && 'success' or name == :warning && 'warning' or name == :info && 'info' or 'error')%>">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <%= msg%>
  </div>
+
+
    <% end %>
    
-   
-
+  
 
     <div class="row-fluid">
+
+      <div id ="col">
       <div class="span2">
         <div class ="navi">
      
       <ul class="nav nav-tabs nav-stacked">
         <li class="nav-header">Navigation</li>
-        <li>
-          <a href= "index.html"><i class="icon-home icon-blue"></i>Home</a></li>
+        <li><a href= "index.html"><i class="icon-home icon-blue"></i>Home</a></li>
         <li><%= link_to '<i class="icon-suitcase icon-blue"></i>Grants'.html_safe, projects_path %></li>
         <li><%= link_to '<i class="icon-money icon-blue"></i>Donors'.html_safe, donors_path %></li>
         <li><%= link_to '<i class="icon-cogs icon-blue"></i>Progress'.html_safe, progresses_path %></i></li> 
@@ -82,8 +83,27 @@
  
       </div>
       </div>
+    </div>
+      <div class="span10">
+<!--
+        <div class="nav nav-tabs">
+<ul class="nav nav-tabs">
+    <li class="<%= 'active' if params[:tab] == 'tab1' %>"><a href="#tab1" data-toggle="tab">About us</a></li>
+    <li class="<%= 'active' if params[:tab] == 'tab9' %>"> <a href="#tab9" data-toggle="tab">Address</a></li>
+</ul>
 
-      <div class="span10"><%= yield %></div>
+<div class="tab-content">
+    <div class="<%= if (params[:tab] == 'tab1' || !params[:tab])then 'tab-pane active'  else 'tab-pane' end%>" id="tab1">
+       <%= link_to Grant, grantees_path %>
+    </div>
+    <div class="<%= if params[:tab] == 'tab9' then 'tab-pane active'  else 'tab-pane' end%>" id="tab9">
+       <%= link_to Grantee, grantees_path %>
+    </div>
+</div>
+-->
+
+       <div id = 'pager'> <%= yield %></div>
+      </div> 
       
       
       <%= yield :scripts %>

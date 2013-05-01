@@ -2,7 +2,7 @@
 <div class="page-header">
   <h1><!--<%=t '.title', :default => model_class.model_name.human.pluralize %>--> Grants <i class="icon-suitcase icon-blue"></i></h1>
 </div> 
-<table class="table table-striped">
+<table class="table table-bordered">
   <thead>
     <tr>
       <!--<th><%= model_class.human_attribute_name(:id) %></th> -->
@@ -12,10 +12,10 @@
       <th><%= model_class.human_attribute_name(:longitude) %></th>-->
       <th><%= model_class.human_attribute_name(:balance) %></th>
       <th><%= model_class.human_attribute_name(:amount) %></th>
-      <th><%= model_class.human_attribute_name(:accountnumber) %></th>
+      <th>File Number</th>
       <th><%= model_class.human_attribute_name(:donor_id) %></th>
-      <!--<th><%= model_class.human_attribute_name(:ledger_id) %></th>-->
-      <th><%= model_class.human_attribute_name(:budget_id) %></th>
+      <!--<th><%= model_class.human_attribute_name(:ledger_id) %></th>
+      <th><%= model_class.human_attribute_name(:budget_id) %></th>-->
       <th><%= model_class.human_attribute_name(:grantee_id) %></th>
       <th><%= model_class.human_attribute_name(:startdate) %></th>
       <th><%= model_class.human_attribute_name(:finish) %></th>
@@ -36,10 +36,10 @@
         <td><%= number_to_currency project.balance %></td>
         <td><%= number_to_currency project.amount %></td>
         <td><%= project.accountnumber %></td>
-        <td><%= project.donor_id %></td>
-        <!--<td><%= project.ledger_id %></td>-->
-        <td><%= project.budget_id %></td>
-        <td><%= project.grantee.organization %></td>
+        <td><%= project.donor.name %></td>
+        <!--<td><%= project.ledger_id %></td>
+        <td><%= project.budget_id %></td> -->
+        <td><%= link_to project.grantee.organization, grantees_path %></td>
         <td><%= project.startdate %></td>
         <td><%= project.finish %></td>
        <!-- <td><%=l project.created_at %></td>-->

@@ -11,7 +11,7 @@
   <dt><strong><%= model_class.human_attribute_name(:funding) %>:</strong></dt>
   <dd><%=number_to_currency @donor.funding %></dd>
   <dt><strong><%= model_class.human_attribute_name(:project_id) %>:</strong></dt>
-  <dd><%= @donor.project_id %></dd>
+  <dd><%= @donor.project.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:balance) %>:</strong></dt>
   <dd><%= number_to_currency @donor.balance %></dd>
 </dl>

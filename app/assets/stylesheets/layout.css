@@ -1,4 +1,3 @@
-
 footer {
 text-align: float right;
 margin-top: 10px;
@@ -8,6 +7,12 @@ margin-right: auto;
 }
 footer nav {
 float: none;
+}
+
+#col{
+  font-size: 15px;
+  color: yellow;
+  font-weight: bold;
 }
 
 div.field, div.actions {
@@ -159,7 +164,4 @@ aside {
   .icon-cloud-upload {
     float: left;
     margin-top: 2px;
-    margin-right: -6px;
-    
-  }
- 
+    margin-right: -6px; 

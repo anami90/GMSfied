@@ -2,26 +2,20 @@
 $iconSpritePath: image-path('glyphicons-halflings.png');
 $iconWhiteSpritePath: image-path('glyphicons-halflings-white.png');
 
-/*$navbarBackground: #555;
-$navbarBackgroundHighlight: #888;
+$navbarBackground: #0088CC;
+$navbarBackgroundHighlight:#6699FF;
 $navbarText: #eee;
 $navbarLinkColor: #eee;
-*/
-
 
 @import "bootstrap";
 
-body { padding-top: 40px; }
+body { padding-top: 55px; }
 
 @import "bootstrap-responsive";
 
-
-
 .navbar .brand {
-  color: #88aaaa ;
+  color: #000 ;
 }
-
-
 
 /*// Set the correct sprite paths
 @iconSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings");

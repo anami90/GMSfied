@@ -4,6 +4,8 @@ class Staff < ActiveRecord::Base
   
   has_attached_file :attachment
   validates_attachment :attachment, :presence => true
+  validates_attachment_content_type :attachment, :content_type =>['application/pdf']
+
   #:content_type => { :content_type => "image/jpg" },
   #:size => { :in => 0..10.kilobytes }
   #relationships

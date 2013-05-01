@@ -14,7 +14,4 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
-
-
-$('.dropdown-toggle').dropdown() 
-$(".alert").alert('close')
+    $(".alert").alert('close')

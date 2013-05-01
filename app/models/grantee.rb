@@ -3,6 +3,7 @@ class Grantee < ActiveRecord::Base
   validates_presence_of :date, :description, :email, :firstname, :lastname, :memorandumou, :organization, :project_id =>   "Cant be blank"
 
   has_attached_file :memorandumou
+  validates_attachment_content_type :memorandumou, :content_type =>['application/pdf']
 
   #Relationships
   has_many :projects

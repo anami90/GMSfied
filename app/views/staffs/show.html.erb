@@ -9,11 +9,11 @@
   <dt><strong><%= model_class.human_attribute_name(:lastname) %>:</strong></dt>
   <dd><%= @staff.lastname %></dd>
   <dt><strong><%= model_class.human_attribute_name(:project_id) %>:</strong></dt>
-  <dd><%= @staff.project_id %></dd>
+  <dd><%= @staff.project.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @staff.description %></dd>
   <dt><strong><%= model_class.human_attribute_name(:attachment) %>:</strong></dt> 
-  <dd><%= link_to @staff.attachment.name, @staff.attachment.url, :target => '_blank' %></dd>
+  <dd><%= link_to "PDF", @staff.attachment.url, :target => '_blank' %></dd>
   <dt><strong><%= model_class.human_attribute_name(:grantee_id) %>:</strong></dt>
   <dd><%= @staff.grantee_id %></dd>
 </dl>

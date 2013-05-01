@@ -1,7 +1,6 @@
 Grant::Application.routes.draw do
   
   #get "sign/new"
-  
   resources :sessions
   
   resources :signs, :only => [:new, :create, :destroy]
@@ -17,10 +16,11 @@ Grant::Application.routes.draw do
   match '/signi', :to => 'signs#try'
 
 
-  #root to: "/signs#index"
-
   get "pages/about"
   match '/about', to: 'pages#about'
+
+  get "pages/contact"
+  match '/contact', to: 'pages#contact'
 
   get "pages/help"
   match '/help', to: 'pages#help'

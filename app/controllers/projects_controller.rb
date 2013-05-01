@@ -3,10 +3,12 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
       @projects = Project.all
-    # @json = @projects.to_gmaps4rails
+
+      # @json = @projects.to_gmaps4rails
       respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @projects }
+
     end
   end
 
@@ -15,10 +17,18 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
 
+    @project.balance 
     @budgets = @project.budgets
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }
+      format.pdf do 
+          pdf = ProjectPdf.new(@project, view_context) 
+          send_data pdf.render, filename: "#{@project.name}.pdf",
+                                type: "application/pdf",
+                                dispositon: "inline"
+        end  
     end
   end
 
@@ -27,6 +37,7 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new
 
+    @project.balance = 0 #display default balance
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @project }
@@ -37,13 +48,12 @@ class ProjectsController < ApplicationController
   def edit
     @project = Project.find(params[:id])
 
-    @total =0
-    @project.budgets.each  do |x|
-      @total = @total+x.amount 
-
-    end
-    @project.balance = @project.amount - @total
-
+   
+      @total =0
+      @project.budgets.each  do |x|
+       @total = @total+x.amount 
+      end
+      @project.balance = @project.amount - @total
     
   end
   

@@ -5,7 +5,7 @@
 
  
 
-<table class="table table-striped">
+<table class="table table-bordered">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
@@ -15,7 +15,7 @@
       <th>MOU</th>
       <th><%= model_class.human_attribute_name(:organization) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:project_id) %></th>
+      <th>Grant</th>
       <th><%= model_class.human_attribute_name(:date) %></th>
       <!--<th><%= model_class.human_attribute_name(:created_at) %></th>-->
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -28,7 +28,7 @@
         <td><%= grantee.firstname %></td>
         <td><%= grantee.lastname %></td>
         <td><%= grantee.email %></td>
-        <td><%= link_to grantee.memorandumou.name, grantee.memorandumou.url , :target => '_blank'%></td>
+        <td><%= link_to "PDF", grantee.memorandumou.url , :target => '_blank', :class =>"icon-folder-open-alt icon-blue icon-4"%></td>
        <!-- link_to @grantee.memorandumou.name, @grantee.memorandumou.url -->
         <td><%= grantee.organization %></td>
         <td><%= grantee.description %></td>

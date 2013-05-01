@@ -2,7 +2,7 @@
   <%= f.input :task %>
   <%= f.input :amount, placeholder: 'in USD ($)' %>
   <%= f.input :description %>
-  <%= f.input :status, as: :radio_buttons, priority: [ "Pending" ], collection: [ "Approved", "Denied", "Pending"] %>
+  <%= f.input :status, as: :radio_buttons, priority: [ "Pending" ], collection: [ "Approved", "Denied", "Pending"], :readonly => true  %>
   <%= f.input :receiptno %>
   <%= f.input :project_id, label: 'Grant Name'  do %>
      <%= f.collection_select :project_id, Project.order(:name), :id, :name, include_blank:true %>
