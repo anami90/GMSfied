@@ -2,7 +2,11 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-      @projects = Project.all
+
+      @search = Project.search(params[:q])
+      @projects = @search.result
+
+      #@projects = Project.all
 
       # @json = @projects.to_gmaps4rails
       respond_to do |format|

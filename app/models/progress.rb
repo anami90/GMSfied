@@ -5,7 +5,8 @@ class Progress < ActiveRecord::Base
 belongs_to :session
 belongs_to :project
   
-validates :post, :length => { :maximum => 200 }
+validates :post, :length => { :maximum => 300 }
+validates :session_id, presence: true
 
 default_scope order: 'Progresses.created_at DESC'
 end

@@ -5,6 +5,7 @@ class BudgetsController < ApplicationController
   def index
     @budgets = Budget.all
 
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @budgets }

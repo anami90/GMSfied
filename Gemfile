@@ -12,12 +12,11 @@ source 'https://rubygems.org'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails',   '~> 3.2'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'simple_form','~> 2.0.0'
-  gem "bootstrap-sass", "~> 2.2.2.0"
   gem 'font-awesome-sass-rails','3.0.2.1'
-  
+  gem 'bootstrap-sass', '~> 2.3.1.0'
   gem "geocoder"
   gem "paperclip", "~> 3.0"
  
@@ -31,7 +30,7 @@ group :assets do
   
  #gem 'less-rails'
   
-  gem 'tabs_on_rails'
+  #gem 'tabs_on_rails'
   
  # gem 'carrierwave'
   
@@ -43,6 +42,7 @@ end
 
 gem 'jquery-rails', '2.0.2'
 gem 'prawn'
+gem 'ransack'
 
 group :development do 
   

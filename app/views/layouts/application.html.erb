@@ -16,7 +16,7 @@
  
 <div class="navbar navbar-fixed-top">
 <!--<%= link_to logo, signup_path %>-->
-<div id= "stripe">c</div> 
+
     <div class="navbar-inner">
       <div class="container">
         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -71,7 +71,7 @@
      
       <ul class="nav nav-tabs nav-stacked">
         <li class="nav-header">Navigation</li>
-        <li><a href= "index.html"><i class="icon-home icon-blue"></i>Home</a></li>
+        <li><%= link_to '<i class="icon-home icon-blue"></i>Home'.html_safe, about_path %></li>
         <li><%= link_to '<i class="icon-suitcase icon-blue"></i>Grants'.html_safe, projects_path %></li>
         <li><%= link_to '<i class="icon-money icon-blue"></i>Donors'.html_safe, donors_path %></li>
         <li><%= link_to '<i class="icon-cogs icon-blue"></i>Progress'.html_safe, progresses_path %></i></li> 
@@ -85,6 +85,8 @@
       </div>
     </div>
       <div class="span10">
+
+            
 <!--
         <div class="nav nav-tabs">
 <ul class="nav nav-tabs">
@@ -110,9 +112,9 @@
      
       
     </div>
-    <%= render 'layouts/footer' %>
+    
     <%= debug(params) if Rails.env.development? %>
-
+    <%= render 'layouts/footer' %>
   </div>
 </body>
 </html>

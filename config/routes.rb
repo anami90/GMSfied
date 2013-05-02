@@ -41,6 +41,7 @@ Grant::Application.routes.draw do
 
 
   resources :progresses
+  resources :progresses, only: [:create, :destroy]
 
 
   resources :users
