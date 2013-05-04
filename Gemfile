@@ -40,9 +40,12 @@ group :assets do
    
 end
 
+#gem 'axlsx_rails'
 gem 'jquery-rails', '2.0.2'
 gem 'prawn'
 gem 'ransack'
+gem 'acts_as_xlsx'
+gem 'axlsx_rails'
 
 group :development do 
   

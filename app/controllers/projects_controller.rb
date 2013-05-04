@@ -12,8 +12,15 @@ class ProjectsController < ApplicationController
       respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @projects }
-
+      format.xlsx {
+    xlsx_package = Project.to_xlsx
+    begin
+      send_data xlsx_package.to_stream.read, :filename => 'projects.xlsx', :type=> "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" 
+    ensure
+      
     end
+ }   
+     end
   end
 
   # GET /projects/1

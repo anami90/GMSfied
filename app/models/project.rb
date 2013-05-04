@@ -14,7 +14,9 @@ has_many :progresses
 
 validates_numericality_of :amount, :greater_than_or_equal_to => Proc.new { |r| r.balance }, :allow_blank => true
 
+acts_as_xlsx
 
 #acts_as_gmappable :process_geocoding => false
-
+	
+	
 end

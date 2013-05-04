@@ -9,6 +9,14 @@ class BudgetsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @budgets }
+      format.xlsx {
+    xlsx_package = Budget.to_xlsx
+    begin
+      send_data xlsx_package.to_stream.read, :filename => 'budgets.xlsx', :type=> "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" 
+    ensure
+      
+    end
+ }   
     end
   end
 
