@@ -30,7 +30,8 @@
       <th><%= model_class.human_attribute_name(:startdate) %></th>
       <th><%= model_class.human_attribute_name(:finish) %></th>
       <!--<th><%= model_class.human_attribute_name(:created_at) %></th> -->
-      <% if !current_user?(session) %>
+      <th><%= model_class.human_attribute_name(:milestones) %></th>
+            <% if !current_user?(session) %>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
        <%end%>
     </tr>
@@ -53,6 +54,7 @@
         <td><%= project.startdate %></td>
         <td><%= project.finish %></td>
        <!-- <td><%=l project.created_at %></td>-->
+       <td><%= project.milestones %></td>
         <td>
           <% if !current_user?(session) %>
 

@@ -14,6 +14,8 @@ class DonorsController < ApplicationController
   # GET /donors/1.json
   def show
     @donor = Donor.find(params[:id])
+
+      @projects = @donor.projects
       
       respond_to do |format|
       format.html # show.html.erb

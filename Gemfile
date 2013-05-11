@@ -46,6 +46,8 @@ gem 'prawn'
 gem 'ransack'
 gem 'acts_as_xlsx'
 gem 'axlsx_rails'
+#gem "rolify"
+gem 'css3-progress-bar-rails'
 
 group :development do 
   

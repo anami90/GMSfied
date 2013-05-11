@@ -1,6 +1,8 @@
 class ProgressesController < ApplicationController
   before_filter :signed_in_user, only: [:create, :destroy, :index, :show] 
-  
+ # before_filter :authenticate, only: => [:create, :destroy]
+    
+  #end]
   # GET /progresses
   # GET /progresses.json
   def index
@@ -43,6 +45,8 @@ class ProgressesController < ApplicationController
   # POST /progresses.json
   def create
     @progress = Progress.new(params[:progress])
+
+    @progress = current_user.progresses.build(params[:progress])
 
     respond_to do |format|
       if @progress.save

@@ -101,6 +101,7 @@ list-style: square;
 }
 .dload{
   border-top: 2px solid #e8e8e8;
+  border-bottom: 2px solid #e8e8e8;
 }
 .download{
   border-top: 1px solid #e8e8e8;

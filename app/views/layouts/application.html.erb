@@ -24,14 +24,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" color = "#fff "href="index.html">GMS</a>
+        <a class="brand" color = "#fff "href="#">GMS</a>
         <div class="nav-collapse">
           <ul class="nav">
             <li><%= link_to "Progress", progresses_path %></li>
             <li><%= link_to "Donors", donors_path %></li>
             <li><%= link_to "Grantees", grantees_path %></li>
             <li><%= link_to "Staff", staffs_path %></li>
-            <li><%= link_to "Budgets", budgets_path %></li> 
+            <li><%= link_to "Transactions", budgets_path %></li> 
           </ul>
            <div class = "sign">
            <ul class="nav">
@@ -58,10 +58,9 @@
   <%= msg%>
  </div>
 
-
+ 
    <% end %>
-   
-  
+     
 
     <div class="row-fluid">
 
@@ -77,7 +76,7 @@
         <li><%= link_to '<i class="icon-cogs icon-blue"></i>Progress'.html_safe, progresses_path %></i></li> 
         <li><%= link_to '<i class="icon-gift icon-blue"></i> Grantee'.html_safe, grantees_path%></i></li>
         <li><%= link_to '<i class="icon-group icon-blue"></i> Staff'.html_safe, staffs_path%></i></li>
-        <li><%= link_to '<i class="icon-bar-chart icon-blue"></i> Budget'.html_safe, budgets_path%></i></li>
+        <li><%= link_to '<i class="icon-bar-chart icon-blue"></i> Transations'.html_safe, budgets_path%></i></li>
       </ul>
 
  

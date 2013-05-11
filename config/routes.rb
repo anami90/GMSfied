@@ -1,4 +1,6 @@
 Grant::Application.routes.draw do
+
+  root :to => "signs#new#index"
   
   #get "sign/new"
   resources :sessions

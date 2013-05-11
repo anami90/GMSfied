@@ -1,13 +1,14 @@
 class Project < ActiveRecord::Base
- attr_accessible :accountnumber, :amount, :balance, :budget_id, :donor_id, :finish, :grantee_id, :latitude, :ledger_id, :location, :longitude, :name, :startdate
-validates_presence_of :accountnumber, :amount, :finish, :location, :name, :startdate => "Cant be blank"  
+ attr_accessible :accountnumber, :amount, :balance, :budget_id, :donor_id, :finish, :grantee_id, :latitude, :ledger_id, :location, :longitude, :name, :startdate, :milestones, :stage
+validates_presence_of :accountnumber,:milestones, :amount, :finish, :location, :name, :startdate, :milestones, :stage => "Cant be blank"  
 
 geocoded_by :location   # can also be an IP address
 after_validation :geocode
 
 #relationships
 belongs_to :grantee
-has_many :budgets 
+has_many :budgets
+has_many :staffs 
 belongs_to :donor 
 belongs_to :grantee
 has_many :progresses

@@ -14,3 +14,12 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+$(function() {
+  $('input.datepicker').datepicker();
+});
+$ ->
+  $("input.datepicker").each (i) ->
+    $(this).datepicker
+      altFormat: "yy-mm-dd"
+      dateFormat: "mm/dd/yy"
+      altField: $(this).next()

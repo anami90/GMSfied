@@ -1,0 +1,11 @@
+<div class = "anami">
+<li>
+  <span class="post">Name: <%= project.name %></span></br> 
+  <span class="post">Location: <%= project.location %></span></br>
+  <span class = "timestmp"> Funding: <%= project.amount %></span></br>
+  <span class="timestamp">
+    Added to project <%= time_ago_in_words(project.created_at) %> ago.
+  </span>
+  <%= link_to 'View details', project_path(project)%>
+</li>
+</div>

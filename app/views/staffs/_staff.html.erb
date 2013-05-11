@@ -1,0 +1,11 @@
+<div class = "anami">
+<li>
+  <span class="post"><%= staff.firstname %></span> 
+  <span class="post"><%= staff.lastname %></span></br>
+  <span class = "milestone"> Postion: <%= staff.description %></span></br>
+  <span class="timestamp">
+    Added to project <%= time_ago_in_words(staff.created_at) %> ago.
+  </span>
+  <%= link_to 'View details', staff_path(staff)%>
+</li>
+</div>

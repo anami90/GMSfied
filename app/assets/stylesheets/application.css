@@ -11,4 +11,5 @@
  *= require_self
  *= require_tree .
  *= require_font-awesome
+ *= require 'css3-progress-bar'
  */
