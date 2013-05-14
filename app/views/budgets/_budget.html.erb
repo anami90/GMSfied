@@ -1,11 +1,36 @@
-<div class='anami'>
-<li>
-		 <span class = "post"><%=budget.task %></span></br>
-         <span class="post"><%= number_to_currency budget.amount %></span></br>
-         <span class = "milestone"> Status: <%= budget.status %></span></br>
-         <span class="timestamp">
-            Posted <%= time_ago_in_words(budget.created_at) %> ago.
-         </span>
-</li>
-
-<div>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+    
+      <th>task</th>
+      <th>amount</th>
+      <th>description</th>
+      <th>status</th>
+      <th>receipt</th>
+      <th>Submitted</th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @budgets.each do |budget| %>
+      <tr>
+        
+        <td><%= link_to budget.task, budget_path(budget) %></td>
+        <td><%= number_to_currency budget.amount %></td>
+        <td><%= budget.description %></td>
+        <td><%= budget.status %></td>
+        <td><%= budget.receiptno %></td>
+        <td> <%= time_ago_in_words(budget.created_at) %> ago.</td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_budget_path(budget), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      budget_path(budget),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

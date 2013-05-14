@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130507214118) do
+ActiveRecord::Schema.define(:version => 20130514142511) do
 
   create_table "budgets", :force => true do |t|
     t.string   "task"
@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(:version => 20130507214118) do
     t.string   "name"
     t.text     "description"
     t.float    "funding"
-    t.integer  "project_id"
     t.float    "balance"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "project"
   end
 
   create_table "grantees", :force => true do |t|
@@ -52,13 +52,13 @@ ActiveRecord::Schema.define(:version => 20130507214118) do
 
   create_table "progresses", :force => true do |t|
     t.integer  "project_id"
-    t.string   "milestone"
     t.string   "post"
     t.string   "status"
     t.datetime "date"
     t.integer  "session_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "milestone"
   end
 
   create_table "projects", :force => true do |t|
@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(:version => 20130507214118) do
     t.float    "latitude"
     t.float    "longitude"
     t.float    "balance"
-    t.float    "amount"
     t.float    "accountnumber"
     t.integer  "donor_id"
     t.integer  "ledger_id"
@@ -80,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20130507214118) do
     t.string   "image"
     t.integer  "milestones"
     t.string   "stage"
+    t.decimal  "amount"
   end
 
   create_table "sessions", :force => true do |t|

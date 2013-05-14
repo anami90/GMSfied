@@ -1,6 +1,6 @@
 class Grantee < ActiveRecord::Base
   attr_accessible :date, :description, :email, :firstname, :lastname, :memorandumou, :organization, :project_id
-  validates_presence_of :date, :description, :email, :firstname, :lastname, :memorandumou, :organization, :project_id =>   "Cant be blank"
+  validates_presence_of :date, :description, :email, :firstname, :lastname, :memorandumou, :organization =>   "Cant be blank"
 
   has_attached_file :memorandumou
   validates_attachment_content_type :memorandumou, :content_type =>['application/pdf']

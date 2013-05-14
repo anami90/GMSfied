@@ -6,7 +6,7 @@ class ProjectPdf < Prawn::Document
 		text "Grant: #{@project.name}", size: 30, style: :bold
 		header_message
 		line_items
-		budg
+		#budg
 		regards_message
 	end
 
@@ -23,6 +23,7 @@ class ProjectPdf < Prawn::Document
 
 	def line_items
 		move_down 20
+
 		table line_items_rows do 
 		 	row(0).align = :center
 			row(0).font_style = :bold
@@ -35,11 +36,9 @@ class ProjectPdf < Prawn::Document
 	def line_items_rows
 		[["Name", "Location", "Balance", "Amount", "File Number", "Donor", "Grantee"],
 		[@project.name, @project.location, price(@project.balance), price(@project.amount), @project.accountnumber,@project.donor.name, @project.grantee.organization]]
-		
+		 
 	end	
-	def budg
-		[["Budget"],[@budgets]]
-	end	
+	
 
 	def regards_message
     move_down 50

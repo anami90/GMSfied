@@ -6,6 +6,9 @@ class ProjectsController < ApplicationController
       @search = Project.search(params[:q])
       @projects = @search.result
       @grantees = Grantee.all
+      
+      #total
+      @total =0
 
       #@projects = Project.all
 
@@ -32,6 +35,7 @@ class ProjectsController < ApplicationController
     @project.balance 
     @budgets = @project.budgets
     @staffs = @project.staffs
+    
 
     respond_to do |format|
       format.html # show.html.erb
@@ -50,6 +54,7 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new
 
+    @project.stage = 0
     @project.balance = 0 #display default balance
     respond_to do |format|
       format.html # new.html.erb
@@ -61,7 +66,8 @@ class ProjectsController < ApplicationController
   def edit
     @project = Project.find(params[:id])
 
-      @project.stage = @progress.milestone
+      
+      #@milestone = @project.progresses.last.milestone
       @total =0
       @project.budgets.each  do |x|
        @total = @total+x.amount 

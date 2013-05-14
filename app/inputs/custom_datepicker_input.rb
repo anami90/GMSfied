@@ -1,4 +1,4 @@
-class DatepickerInput < SimpleForm::Inputs::Base
+class CustomDatepickerInput < SimpleForm::Inputs::Base
   def input
     text_field_options = input_html_options.dup
     hidden_field_options = input_html_options.dup

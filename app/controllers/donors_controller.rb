@@ -39,11 +39,11 @@ class DonorsController < ApplicationController
   def edit
     @donor = Donor.find(params[:id])
 
-     @total =0
-    @donor.project.each  do |x|
-      @total = @total+x.amount 
-    end
-    @donor.balance = @donor.funding - @total
+    @total =0
+      @donor.projects.each  do |x|
+       @total = @total+x.amount 
+      end
+      @donor.balance = @donor.funding - @total
  
   end
 

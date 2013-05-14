@@ -1,7 +1,7 @@
 <%- model_class = Project -%>
 <div class="page-header">
-  <h1>Grant <i class="icon-suitcase icon-blue"></i></h1>
-</div>
+  <!--<h1>Grant <i class="icon-suitcase icon-blue"></i></h1> -->
+</div> 
 <div class= "span8">
    <div class="tabbable"> <!-- Only required for left/right tabs -->
     <ul class="nav nav-tabs">
@@ -29,11 +29,11 @@
           <dt><strong><%= model_class.human_attribute_name(:donor_id) %>:</strong></dt>
           <dd><%= @project.donor.name %></dd>
           <!--<dt><strong><%= model_class.human_attribute_name(:ledger_id) %>:</strong></dt>
-          <dd><%= @project.ledger_id %></dd> -->
+          <dd><%= @project.ledger_id %></dd> 
           <dt><strong><%= model_class.human_attribute_name(:budget_id) %>:</strong></dt>
-          <dd><%= @project.budget_id %></dd>
+          <dd><%= @project.budget_id %></dd> -->
           <dt><strong><%= model_class.human_attribute_name(:grantee_id) %>:</strong></dt>
-          <dd><%= @project.grantee.organization %></dd>
+          <dd><%= @project.grantee_id %></dd>
           <dt><strong><%= model_class.human_attribute_name(:startdate) %>:</strong></dt>
           <dd><%= @project.startdate %></dd>
           <dt><strong><%= model_class.human_attribute_name(:finish) %>:</strong></dt>
@@ -46,6 +46,7 @@
             <p><b>Download:</b></p>
             <p><%= link_to image_tag('/assets/PDFs.png'), project_path(@project, format: "pdf") %> </p> 
           </div>
+          <% if current_user.admin? && !current_user?(session) %>
         <div class="form-actions">
           <%= link_to t('.back', :default => t("helpers.links.back")),
                       projects_path, :class => 'btn'  %>
@@ -59,6 +60,7 @@
 
                   
         </div> 
+        <% end %>
      </div>
       <div class="tab-pane" id="tab2">
         <%if @project.staffs.any? %>
@@ -67,19 +69,28 @@
            <%= render @staffs %>
          </ol>
         <% end %>
+
+          <%= link_to t('.new', :default => t("helpers.links.new")),
+            new_staff_path,
+            :class => 'btn btn-primary' %>
       </div> 
       <div class="tab-pane" id="tab3">
         <%if @project.budgets.any? %>
-         <h6> Showing <%= @project.budgets.count %> Transactions </h6>
-         <ol class= "microposts">
-           <%= render @budgets %>
-         </ol>
-        <% end %>
+           <h6> Showing <%= @project.budgets.count %> Transactions </h6>
+         
+           <%= render @project.budgets.first %>
+
+         <% end %>
+          <%= link_to t('.new', :default => t("helpers.links.new")),
+            new_budget_path,
+            :class => 'btn btn-primary' %>
       </div> 
     </div>
   </div>
  </div>
  <div class= "span2">
     <h1>GRAPH</h1>
+    <div class = "span2">
+    <%= content_tag :div, "", id: "projects_budget_chart", data: {projects: @project.budgets} %>
+    </div>
   </div> 
-

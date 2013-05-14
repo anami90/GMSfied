@@ -20,6 +20,10 @@
 <div class="actions">
 <%= f.submit "Update" %>
 </div>
+
+<% if current_user.admin? && !current_user?(session) %>
+	<%= link_to "Add new User", signup_path, :class => "signup_button round" %>
+<% end %>
 <% end %>
 
 

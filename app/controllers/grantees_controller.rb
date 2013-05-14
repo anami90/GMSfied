@@ -3,6 +3,7 @@ class GranteesController < ApplicationController
   # GET /grantees.json
   def index
     @grantees = Grantee.all
+    
 
     respond_to do |format|
       format.html # index.html.erb

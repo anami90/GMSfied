@@ -1,19 +1,21 @@
-<%= simple_form_for @project, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :name %>
+<%= simple_form_for @project, :html => { :class => 'form-horizontal' }, :validate => true do |f| %>
+  <%= f.input :name do %>
+    <%=f.collection_select :donor_id, Donor.order(:project), :id, :project, include_blank: true %>
+    <%end%>
   <%= f.input :location, placeholder: 'eg: Nairobi, Kenya' %>
   <%= f.input :balance, :readonly => true %>
-  <%= f.input :amount, placeholder: 'in USD ($)', label: 'Grant Awarded' %>
+  <%= f.input :amount, :placeholder => 'in USD ($)', label: 'Grant Awarded' %>
   <%= f.input :accountnumber, label: 'File number'%>
   <%= f.input :donor_id do %>
     <%= f.collection_select :donor_id, Donor.order(:name), :id, :name, include_blank: true %>
     <%end%>
   <%= f.input :grantee_id do %>
-   <%= f.collection_select :grantee_id, Grantee.order(:organization), :id, :organization, include_blank: true %>
-   <%end%>
+    <%= f.collection_select :grantee_id, Grantee.order(:organization), :id, :organization, include_blank: true %>
+    <%end%>
   <%= f.input :startdate %>
   <%= f.input :finish %>
   <%= f.input :milestones %>
-  <%= f.input :stage %>
+ 
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

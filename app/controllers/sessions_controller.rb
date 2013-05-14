@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   #before_filter :authenticate, :only =>[:edit, :update]
   before_filter :correct_user, :only => [:edit, :update]
-
+  before_filter :admin_user,     only: :destroy
 
   def index
  
@@ -27,6 +27,7 @@ class SessionsController < ApplicationController
   def create
      @session = Session.new(params[:session])
     if @session.save
+      SessionMailer.welcome_email(@session).deliver
     sign_in @session
      # Handle a successful save.
      flash[:success] = "Welcome to the GMS"
@@ -64,6 +65,10 @@ class SessionsController < ApplicationController
      @session = Session.find(params[:id])
      redirect_to(signin_path) unless current_user?(@session)
   end
+
+  def admin_user
+      redirect_to(root_path) unless current_user.admin?
+    end
 
   
 end     

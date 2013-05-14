@@ -1,6 +1,6 @@
 class Donor < ActiveRecord::Base
-  attr_accessible :description, :name, :balance, :funding, :project_id
-  validates_presence_of :description, :name, :balance, :funding, :project_id => "Cant be blank"
+  attr_accessible :description, :name, :balance, :funding, :project
+  validates_presence_of :description, :name, :balance, :funding, :project => "Cant be blank"
   
   
   #Relationships

@@ -28,6 +28,12 @@ class BudgetsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @budget }
+      format.pdf do 
+          pdf = BudgetPdf.new(@budget, view_context) 
+          send_data pdf.render, filename: "#{@budget.name}.pdf",
+                                type: "application/pdf",
+                                dispositon: "inline"
+        end  
     end
   end
 

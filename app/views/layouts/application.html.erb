@@ -8,6 +8,7 @@
   <![endif]-->
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "jquery-1.4.2.min", "rails", "highcharts" %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale= 1.0">
 </head>
@@ -60,9 +61,7 @@
 
  
    <% end %>
-     
-
-    <div class="row-fluid">
+       <div class="row-fluid">
 
       <div id ="col">
       <div class="span2">
@@ -70,6 +69,7 @@
      
       <ul class="nav nav-tabs nav-stacked">
         <li class="nav-header">Navigation</li>
+       
         <li><%= link_to '<i class="icon-home icon-blue"></i>Home'.html_safe, about_path %></li>
         <li><%= link_to '<i class="icon-suitcase icon-blue"></i>Grants'.html_safe, projects_path %></li>
         <li><%= link_to '<i class="icon-money icon-blue"></i>Donors'.html_safe, donors_path %></li>

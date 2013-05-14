@@ -13,7 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require raphael
+//= require morris
+//= require rails.validations
+//= require clientsideval
 //= require_tree .
+
 $(function() {
   $('input.datepicker').datepicker();
 });
@@ -23,3 +28,22 @@ $ ->
       altFormat: "yy-mm-dd"
       dateFormat: "mm/dd/yy"
       altField: $(this).next()
+
+ClientSideValidations.formBuilders['SimpleForm::FormBuilder'] = {
+  add: function(element, settings, message) {
+    if (element.data('valid') !== false) {
+      var wrapper = element.closest(settings.wrapper_tag);
+      wrapper.parent().addClass(settings.wrapper_error_class);
+      var errorElement = $('<' + settings.error_tag + ' class="' + settings.error_class + '">' + message + '</' + settings.error_tag + '>');
+      wrapper.append(errorElement);
+    } else {
+      element.parent().find(settings.error_tag + '.' + settings.error_class).text(message);
+    }
+  },
+  remove: function(element, settings) {
+    var wrapper = element.closest(settings.wrapper_tag + '.' + settings.wrapper_error_class);
+    wrapper.removeClass(settings.wrapper_error_class);
+    var errorElement = wrapper.find(settings.error_tag + '.' + settings.error_class);
+    errorElement.remove();
+  }
+};

@@ -41,13 +41,20 @@ group :assets do
 end
 
 #gem 'axlsx_rails'
-gem 'jquery-rails', '2.0.2'
+gem 'jquery-rails', '~> 2.1'
 gem 'prawn'
 gem 'ransack'
 gem 'acts_as_xlsx'
 gem 'axlsx_rails'
 #gem "rolify"
-gem 'css3-progress-bar-rails'
+#gem 'css3-progress-bar-rails'
+gem 'will_paginate', '3.0.3'
+gem 'bootstrap-will_paginate', '0.0.6'
+#gem 'activeadmin'
+gem "highcharts-rails", "~> 3.0.0"
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
+
 
 group :development do 
   
