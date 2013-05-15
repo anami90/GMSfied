@@ -3,7 +3,7 @@
     
     <%= f.input :name %>
     <%= f.input :description, :input_html => { :style => "height: 35px" } %>
-    <%= f.input :funding %>
+    <%= f.input :funding, :placeholder => 'in USD ($)' %>
     <%= f.input :project, label: 'Project Name' %> 
     <%= f.input :balance, :readonly => true %>
     

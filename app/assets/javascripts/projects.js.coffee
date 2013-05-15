@@ -9,4 +9,8 @@ jQuery ->
      ykeys: ['amount','balance']
      labels:['Amount', 'Balance']
 
- 
+
+  $(".jquery-ui-date").datepicker(
+    altField: "#recorded-at-alt",
+    altFormat: "yy-mm-d"
+  )

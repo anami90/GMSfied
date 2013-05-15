@@ -15,7 +15,7 @@
   <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
   <dd><%= @progress.date %></dd>
   <dt><strong>User:</strong></dt>
-  <dd><%= @progress.session_id %></dd>
+  <dd><%= @progress.session.name %></dd>
 </dl>
 
 <div class="form-actions">
@@ -30,8 +30,3 @@
               :class => 'btn btn-danger' %>
 </div>
 
-<script>
-  $(function () {
-    $('.tabs').tabs()
-  })
-</script>

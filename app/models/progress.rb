@@ -1,5 +1,5 @@
 class Progress < ActiveRecord::Base
-  attr_accessible :date, :milestone, :post, :project_id, :status, :session_id
+  attr_accessible :date, :milestone, :post, :project_id, :status
   validates_presence_of :date, :milestone, :post, :project_id, :status, :session_id => "Cant be blank"
 
 belongs_to :session
@@ -10,5 +10,6 @@ validates :session_id, presence: true
 
 validates_numericality_of :milestone, :less_than_or_equal_to => Proc.new { |r| r.project.milestones }, :allow_blank => true
 
+validates :milestone, :numericality => { :greater_than_or_equal_to => 1 }
 default_scope order: 'Progresses.created_at DESC'
 end

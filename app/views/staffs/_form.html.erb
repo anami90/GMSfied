@@ -6,8 +6,8 @@
     <%end%>  
   <%= f.input :description %>
   <%= f.input :attachment, hint: '*Click to upload PDF document.', label_html: { class: 'icon-cloud-upload' }%>
-  <%= f.input :grantee_id do %>
-    <%= f.collection_select :grantee_id, Grantee.order(:organization), :id, :organization, include_blank: true %>
+  <!--<%= f.input :grantee_id do %>
+    <%= f.collection_select :grantee_id, Grantee.order(:organization), :id, :organization, include_blank: true %>-->
   <%end%>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>

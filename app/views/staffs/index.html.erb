@@ -12,7 +12,7 @@
       <th><%= model_class.human_attribute_name(:project_id) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th>Attached Document</th>
-      <th><%= model_class.human_attribute_name(:grantee_id) %></th>
+     <!-- <th><%= model_class.human_attribute_name(:grantee_id) %></th> -->
       <th><%= model_class.human_attribute_name(:created_at) %></th>
        <% if current_user.admin? %>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -28,7 +28,7 @@
         <td><%= staff.project.name %></td>
         <td><%= staff.description %></td>
         <td><i ></i><%= link_to 'PDF', staff.attachment.url, :target => '_blank' , :class =>"icon-folder-open-alt icon-blue icon-4"%> </td>
-        <td><%= staff.grantee_id %></td>
+       <!-- <td><%= staff.grantee_id %></td> -->
         <td><%=l staff.created_at %></td>
          <% if current_user.admin? %>
         <td>

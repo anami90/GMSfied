@@ -17,6 +17,8 @@
 //= require morris
 //= require rails.validations
 //= require clientsideval
+//= require jquery.ui.datepicker
+//= require jsapi
 //= require_tree .
 
 $(function() {
@@ -47,3 +49,7 @@ ClientSideValidations.formBuilders['SimpleForm::FormBuilder'] = {
     errorElement.remove();
   }
 };
+
+$(function (){
+        $('#project_startdate').datepicker();
+});

@@ -1,12 +1,26 @@
 class DonorsController < ApplicationController
+  
   # GET /donors
   # GET /donors.json
   def index
-    @donors = Donor.all
+    #@donors = Donor.all
+
+    @donors = Donor.paginate(:page => params[:page], :per_page => 30)
+
+    @search = Donor.search(params[:q])
+      @donors = @search.result
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @donors }
+      format.xlsx {
+    xlsx_package = Donor.to_xlsx
+    begin
+      send_data xlsx_package.to_stream.read, :filename => 'donors.xlsx', :type=> "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" 
+    ensure
+      
+    end
+ }   
     end
   end
 

@@ -18,16 +18,13 @@
 <form action="/sessions" class="new_session" id="new_session" method="post">
 
 
-<%= form_for @session do |f| %>
-<%= render 'shared/error_messages', :object => f.object %>
-<div class="field">
-<%= f.label :name %><br />
-<%= f.text_field :name %>
-</div>
-<div class="field">
-<%= f.label :email %><br />
-<%= f.text_field :email %>
-</div>
+<%= simple_form_for @session, :html => { :class => 'form-horizontal' }, :validate => true do |f| %>
+
+    <%= f.error_notification %>
+<%= f.input :name %>
+
+<%= f.input :email %><br />
+
 <div class="field">
 <%= f.label :password %><br />
 <%= f.password_field :password %>

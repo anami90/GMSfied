@@ -10,6 +10,10 @@ class ProjectsController < ApplicationController
       #total
       @total =0
 
+
+     # @graph = ofc2(770, 350,
+      #  "/exam/graph_for_generated_report?batch=#{@student.batch.id}&examgroup=#{@exam_group.id}&student=#{@student.id}")
+
       #@projects = Project.all
 
       # @json = @projects.to_gmaps4rails
@@ -67,7 +71,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
 
       
-      #@milestone = @project.progresses.last.milestone
+      @milestone = @project.progresses.last.milestone
       @total =0
       @project.budgets.each  do |x|
        @total = @total+x.amount 

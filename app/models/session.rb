@@ -1,11 +1,12 @@
 class Session < ActiveRecord::Base
   attr_accessor :password
  
-  #has_secure_password
+  has_secure_password
   
-   attr_accessible :email, :name, :password, :password_confirmation
+  attr_accessible :email, :name, :password, :password_confirmation
 
   validates_presence_of :email, :name => "Cant be blank"
+  validates_uniqueness_of :name, :email
   
   #Relationships
  has_many :progresses, dependent: :destroy
@@ -49,11 +50,11 @@ class Session < ActiveRecord::Base
 	 
   private
      def encrypt_password
-	self.salt = make_salt if new_record?
-	self.encrypted_password = encrypt(password)
+      	self.salt = make_salt if new_record?
+      	self.encrypted_password = encrypt(password)
      end
      def encrypt(string)
-	secure_hash("#{salt}--#{string}") 
+	       secure_hash("#{salt}--#{string}") 
      end
      def make_salt
      	secure_hash("#{Time.now.utc}--#{password}")

@@ -48,12 +48,14 @@ gem 'acts_as_xlsx'
 gem 'axlsx_rails'
 #gem "rolify"
 #gem 'css3-progress-bar-rails'
-gem 'will_paginate', '3.0.3'
-gem 'bootstrap-will_paginate', '0.0.6'
+gem 'will_paginate', '~> 3.0'
+gem 'bootstrap-will_paginate'
 #gem 'activeadmin'
-gem "highcharts-rails", "~> 3.0.0"
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
+gem 'acts_as_archive'
+gem 'jquery-ui-rails'
+gem 'ofc2'
 
 
 group :development do 

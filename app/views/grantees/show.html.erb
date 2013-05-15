@@ -17,8 +17,11 @@
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @grantee.description %></dd>
   <dt><strong>Grant:</strong></dt>
-  <dd><%= @grantee.project_id %></dd>
-  <p> Add staff members 
+  <dd><%= @grantee.project_id %></dd></br>
+  <p>  <%= link_to "Add New Staff",
+            new_staff_path,
+            :class => 'btn btn-primary' %> </p>
+
   <!--<dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
   <dd><%= @grantee.date %></dd>-->
   
@@ -36,3 +39,4 @@
               :class => 'btn btn-danger' %>
 </div>
 </div>
+

@@ -3,7 +3,29 @@
   <h1><%=t '.title', :default => model_class.model_name.human %> <i class="icon-money icon-blue"></i></h1>
 </div>
 
+<script type="text/javascript" src="jsapi.jsapi"></script>
 
+<%= search_form_for @search do |f| %>
+  <div class="field">
+    <%= f.text_field :name_cont, placeholder:'Grantor Name' %>
+  
+  <%= f.submit "Search" %> 
+ </div>
+<% end %>
+<div class ="download"><b>Download:</b>
+<%= link_to image_tag('/assets/XLS.png'), url_for(:format=>"xlsx") %>
+</div>
+
+
+
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+     <li class="active"><a href="#tab1" data-toggle="tab">Donor details</a></li>
+     <li><a href="#tab2" data-toggle="tab">Visualizaion </a></li>
+     <li><a href="#tab3" data-toggle="tab"></a></li>
+    </ul>
+    <div class="tab-content">
+       <div class="tab-pane active" id="tab1">
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -50,3 +72,53 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_donor_path,
             :class => 'btn btn-primary' %>
+            
+</div>
+<div class="tab-pane" id="tab2">
+<div id="chart_div" style="width: 900px; height: 500px;"></div>
+</div>
+</div>
+</div> 
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Amount'],
+          ['Total Balance',  <%= Donor.sum("balance").to_i %>],
+          ['Total Funding',  <%= Donor.sum("funding").to_i %>],
+        ]);
+
+        var options = {
+          title: 'Donor visualization'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Donor', 'Funding'],
+          ['2004',  1111],
+          ['2005',  1170],
+          ['2006',  660],
+          ['2007',  1030]
+        ]);
+
+        var options = {
+          title: 'Donor funding',
+          vAxis: {title: 'Donor',  titleTextStyle: {color: 'red'}}
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('char_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="char_div" style="width: 900px; height: 500px;"></div>

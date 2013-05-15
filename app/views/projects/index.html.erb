@@ -15,12 +15,7 @@
                     :class => 'btn btn-primary' %>
 <div class ="download"><b>Download:</b>
 <%= link_to image_tag('/assets/XLS.png'), url_for(:format=>"xlsx") %>
-</div>
-
-        
-                    
-        
-
+</div>              
 
     <ul class="nav nav-tabs">
      <li class="active"><a href="#tab1" data-toggle="tab">Grants</a></li>
@@ -49,9 +44,9 @@
               <th><%= model_class.human_attribute_name(:finish) %></th>
               <!--<th><%= model_class.human_attribute_name(:created_at) %></th> -->
               <th><%= model_class.human_attribute_name(:milestones) %></th>
-                
+                <% if current_user.admin? && !current_user?(session) %>
                   <th><%=t '.actions', :default => t("helpers.actions") %></th>
-               
+               <%end %>
           </tr>
         </thead>
         <tbody>
@@ -68,14 +63,15 @@
               <td><%= project.donor.name %></td>
               <!--<td><%= project.ledger_id %></td>
               <td><%= project.budget_id %></td> -->
-              <td><%= project.grantee_id %></td>
+              <td><%= project.grantee.organization %></td>
               <td><%= project.startdate %></td>
               <td><%= project.finish %></td>
              <!-- <td><%=l project.created_at %></td>-->
              <td><%= project.milestones %></td>
 
              <% @total = @total+project.balance %>
-             
+              <% @total1 = @total+project.amount %>
+             <% if current_user.admin? && !current_user?(session) %>
               <td>
                 <%= link_to t('.edit', :default => t("helpers.links.edit")),
                             edit_project_path(project), :class => 'btn btn-mini' %>
@@ -86,7 +82,7 @@
                             :class => 'btn btn-mini btn-danger' %>
                         
               </td>
-             
+             <%end%>
             </tr>
 
 
@@ -96,10 +92,10 @@
 
           <tr>
 
-<td> Total </td>
+<td><b> Total </b></td>
 <td>  </td>
-<td> <%= number_to_currency @total %> </td>
-<td>  </td>
+<td> <b> <%= number_to_currency @total %> </b></td>
+<td> <b> <%= number_to_currency @total1 %> </b></td>
 <td>  </td>
 <td>  </td>
 <td>  </td>

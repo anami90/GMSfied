@@ -1,10 +1,10 @@
 class SessionMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "cliff.moffitt@gmail.com"
 
-  def welcome_email(session)
+  def registration_confirmation(session)
   	@session = session
-  	@url = "http://example.com/login"
-  	mail(:to => session.email, :subject => "welcome to GMS")
+  	@url = "http://localhost:3000/signin"
+  	mail(:to => "#{session.name} <#{session.email}>", :subject => "welcome to GMS")
   end	
 
 end

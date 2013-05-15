@@ -2,7 +2,7 @@
 <div class="page-header">
   <!--<h1>Grant <i class="icon-suitcase icon-blue"></i></h1> -->
 </div> 
-<div class= "span8">
+<div class= "span7">
    <div class="tabbable"> <!-- Only required for left/right tabs -->
     <ul class="nav nav-tabs">
      <li class="active"><a href="#tab1" data-toggle="tab">Grant details</a></li>
@@ -33,7 +33,7 @@
           <dt><strong><%= model_class.human_attribute_name(:budget_id) %>:</strong></dt>
           <dd><%= @project.budget_id %></dd> -->
           <dt><strong><%= model_class.human_attribute_name(:grantee_id) %>:</strong></dt>
-          <dd><%= @project.grantee_id %></dd>
+          <dd><%= @project.grantee.organization %></dd>
           <dt><strong><%= model_class.human_attribute_name(:startdate) %>:</strong></dt>
           <dd><%= @project.startdate %></dd>
           <dt><strong><%= model_class.human_attribute_name(:finish) %>:</strong></dt>
@@ -88,9 +88,30 @@
     </div>
   </div>
  </div>
- <div class= "span2">
-    <h1>GRAPH</h1>
-    <div class = "span2">
-    <%= content_tag :div, "", id: "projects_budget_chart", data: {projects: @project.budgets} %>
+ <div class= "span3">
+    <h3>Chart</h3>
+    <div class = "span3">
+   <div id="chart_div" style="width: 500px; height: 400px;"></div>
     </div>
   </div> 
+
+
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Amount'],
+          ['Total Balance',  <%= @project.balance.to_i %>],
+          ['Total Funding',  <%= @project.amount.to_i %>],
+        ]);
+
+        var options = {
+          title: 'Fund Usage'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+

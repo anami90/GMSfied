@@ -9,6 +9,10 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "jquery-1.4.2.min", "rails", "highcharts" %>
+  <%= javascript_include_tag 'swfobject.js'%>
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+  <script src="http://code.highcharts.com/modules/exporting.js"></script>
+
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale= 1.0">
 </head>
@@ -37,8 +41,10 @@
            <div class = "sign">
            <ul class="nav">
            <% if signed_in? %>
+           <li><h4><b><%= link_to current_user.name, current_user %></h4></b></li>
            <li><%= link_to '<i class="icon-signout icon-blue"></i>Sign out'.html_safe, signout_path , :method => :delete%></li>
            <li><%= link_to "Settings", edit_session_path(current_user) %></li>
+           
            <% else %>
            <li><%= link_to '<i class="icon-signin icon-blue"></i>Sign in'.html_safe, signin_path %></li>
            
@@ -52,6 +58,7 @@
   </div>
   
 </header>
+
   <div class="container-fluid">
   <% flash.each do |name,msg| %>
  <div class="alert alert-<%=(name == :notice && 'success' or name == :warning && 'warning' or name == :info && 'info' or 'error')%>">
@@ -65,18 +72,22 @@
 
       <div id ="col">
       <div class="span2">
+
         <div class ="navi">
      
       <ul class="nav nav-tabs nav-stacked">
         <li class="nav-header">Navigation</li>
-       
+
         <li><%= link_to '<i class="icon-home icon-blue"></i>Home'.html_safe, about_path %></li>
         <li><%= link_to '<i class="icon-suitcase icon-blue"></i>Grants'.html_safe, projects_path %></li>
         <li><%= link_to '<i class="icon-money icon-blue"></i>Donors'.html_safe, donors_path %></li>
+       <% if current_user.admin? && !current_user?(session) %>
+        
         <li><%= link_to '<i class="icon-cogs icon-blue"></i>Progress'.html_safe, progresses_path %></i></li> 
         <li><%= link_to '<i class="icon-gift icon-blue"></i> Grantee'.html_safe, grantees_path%></i></li>
         <li><%= link_to '<i class="icon-group icon-blue"></i> Staff'.html_safe, staffs_path%></i></li>
         <li><%= link_to '<i class="icon-bar-chart icon-blue"></i> Transations'.html_safe, budgets_path%></i></li>
+        <%end%>
       </ul>
 
  
@@ -115,5 +126,59 @@
     <%= debug(params) if Rails.env.development? %>
     <%= render 'layouts/footer' %>
   </div>
+<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+  <script type="text/javascript">
+  $(function () {
+        $('#container').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Browser market shares at a specific website, 2010'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+              percentageDecimals: 1
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Browser share',
+                data: [
+                    ['Firefox',   45.0],
+                    ['IE',       26.8],
+                    {
+                        name: 'Chrome',
+                        y: 12.8,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['Safari',    8.5],
+                    ['Opera',     6.2],
+                    ['Others',   0.7]
+                ]
+            }]
+        });
+    });
+    
+  </script>
+
+
 </body>
 </html>

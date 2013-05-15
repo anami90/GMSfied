@@ -1,5 +1,5 @@
 class ProgressesController < ApplicationController
-  before_filter :signed_in_user, only: [:create, :destroy, :index, :show] 
+  before_filter :signed_in_user, only: [:create, :destroy] 
  # before_filter :authenticate, only: => [:create, :destroy]
     
   #end]
@@ -44,12 +44,13 @@ class ProgressesController < ApplicationController
   # POST /progresses
   # POST /progresses.json
   def create
-    @progress = Progress.new(params[:progress])
+    #@progress = Progress.new(params[:progress])
 
     @progress = current_user.progresses.build(params[:progress])
 
     respond_to do |format|
       if @progress.save
+        
         format.html { redirect_to @progress, notice: 'Progress was successfully created.' }
         format.json { render json: @progress, status: :created, location: @progress }
       else

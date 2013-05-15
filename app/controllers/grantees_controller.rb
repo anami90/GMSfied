@@ -16,6 +16,8 @@ class GranteesController < ApplicationController
   def show
     @grantee = Grantee.find(params[:id])
 
+
+    @staffs = @grantee.staffs
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @grantee }

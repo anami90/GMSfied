@@ -6,11 +6,12 @@
 
 </head>
 <body>
-<div class= "span6"><h1> Grants <i class="icon-suitcase icon-blue"></i></h1></div>
+<div class= "span6"><h1> Grants </br> <i class="icon-suitcase icon-blue"></i></h1></div>
 <div class= "span4"><h1> Progress <i class="icon-cogs icon-blue-4x"></i></h1></div>
 <% if current_user.admin? && !current_user?(session) %>
 	<%= link_to "Add new users", signup_path, :class => "signup_button round" %>
 <% end %>
 
 </body>
+
 </html>

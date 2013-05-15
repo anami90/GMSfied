@@ -15,8 +15,9 @@ has_many :progresses
 
 validates_numericality_of :amount, :greater_than_or_equal_to => Proc.new { |r| r.balance }, :allow_blank => true
 #validates :startdate, :greater_than_or_equal_to => Proc.new { |r| r.finish }, :allow_blank => true
-validates_numericality_of :amount 
-validates_numericality_of :accountnumber
+validates :amount, :milestones, :numericality => { :greater_than_or_equal_to => 0 }
+validates :accountnumber, :numericality => { :greater_than_or_equal_to => 0 }
+
 
 validate :valid_dates
 

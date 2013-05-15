@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
       @session = Session.find(params[:id])
       @title = @session.name
       @progresses = @session.progresses
+     
 
   end
 
@@ -27,7 +28,7 @@ class SessionsController < ApplicationController
   def create
      @session = Session.new(params[:session])
     if @session.save
-      SessionMailer.welcome_email(@session).deliver
+      SessionMailer.registration_confirmation(@session).deliver
     sign_in @session
      # Handle a successful save.
      flash[:success] = "Welcome to the GMS"
